@@ -1,0 +1,39 @@
+PROJECT,      "Unnamed Project","Information Technology",,,No,No,No,No,No,No,No,No,No,No;
+
+ATTRIBUTES:   TimePrepare,DATATYPE(Real):
+              TimeDone2,DATATYPE(Real):
+              TimeDone3,DATATYPE(Real):
+              TimeDone1,DATATYPE(Real):
+              TimeCreateAccount2,DATATYPE(Real):
+              TimeCreateAccount1,DATATYPE(Real):
+              cus_type,DATATYPE(Real);
+
+QUEUES:       Q_abnormal,FirstInFirstOut,,AUTOSTATS(Yes,,):
+              Q1_Campany,FirstInFirstOut,,AUTOSTATS(Yes,,):
+              Q_decide,FirstInFirstOut,,AUTOSTATS(Yes,,):
+              Q_expert,FirstInFirstOut,,AUTOSTATS(Yes,,):
+              Q2_Company,FirstInFirstOut,,AUTOSTATS(Yes,,):
+              Q2_individual,FirstInFirstOut,,AUTOSTATS(Yes,,):
+              Q1_individual,FirstInFirstOut,,AUTOSTATS(Yes,,);
+
+RESOURCES:    Committee,Capacity(1),,Stationary,COST(0.0,0.0,0.0),,AUTOSTATS(Yes,,):
+              Counter 1B,Capacity(1),,Stationary,COST(0.0,0.0,0.0),,AUTOSTATS(Yes,,):
+              Counter 1A,Capacity(3),,Stationary,COST(0.0,0.0,0.0),,AUTOSTATS(Yes,,):
+              Counter 2B,Capacity(1),,Stationary,COST(0.0,0.0,0.0),,AUTOSTATS(Yes,,):
+              Counter 2A,Capacity(3),,Stationary,COST(0.0,0.0,0.0),,AUTOSTATS(Yes,,):
+              Expert,Capacity(1),,Stationary,COST(0.0,0.0,0.0),,AUTOSTATS(Yes,,);
+
+COUNTERS:     NO of corporate account,,Replicate:
+              NO of abnormal accunt,,Replicate:
+              NO of personal account,,Replicate;
+
+TALLIES:      TimeCommittee:
+              TimeCenter_C:
+              TimeCenter_P;
+
+DSTATS:       1,NR(Expert),Expert Utilization:
+              2,NR(Committee),Committee Utilization:
+              3,NQ(Q_abnormal),NO of waiting for committee;
+
+REPLICATE,    1,,HoursToBaseTime(2880),Yes,Yes,,,,8,Hours,No,No,,,Yes,No;
+

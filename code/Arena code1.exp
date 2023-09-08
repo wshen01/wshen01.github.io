@@ -1,0 +1,41 @@
+PROJECT,      "Unnamed Project","Information Technology",,,No,No,No,No,No,No,No,No,No,No;
+
+ATTRIBUTES:   TimeHold,DATATYPE(Real):
+              TimePrepare,DATATYPE(Real):
+              TimeDone2,DATATYPE(Real):
+              TimeDone3,DATATYPE(Real):
+              TimeDone1,DATATYPE(Real):
+              TimeCreateAccount2,DATATYPE(Real):
+              TimeCreateAccount1,DATATYPE(Real):
+              cus_type,DATATYPE(Real);
+
+QUEUES:       Q_abnormal,FirstInFirstOut,,AUTOSTATS(Yes,,):
+              Q1_Campany,FirstInFirstOut,,AUTOSTATS(Yes,,):
+              Q_expert,FirstInFirstOut,,AUTOSTATS(Yes,,):
+              Q2_Company,FirstInFirstOut,,AUTOSTATS(Yes,,):
+              Q2_individual,FirstInFirstOut,,AUTOSTATS(Yes,,):
+              Q1_individual,FirstInFirstOut,,AUTOSTATS(Yes,,);
+
+RESOURCES:    1,Counter A1,Capacity(3),,Stationary,COST(0.0,0.0,0.0),,AUTOSTATS(Yes,,):
+              2,Counter B1,Capacity(1),,Stationary,COST(0.0,0.0,0.0),,AUTOSTATS(Yes,,):
+              3,Counter A2,Capacity(3),,Stationary,COST(0.0,0.0,0.0),,AUTOSTATS(Yes,,):
+              4,Counter B2,Capacity(1),,Stationary,COST(0.0,0.0,0.0),,AUTOSTATS(Yes,,):
+              5,Expert,Capacity(2),,Stationary,COST(0.0,0.0,0.0),,AUTOSTATS(Yes,,):
+              6,Committee,Capacity(1),,Stationary,COST(0.0,0.0,0.0),,AUTOSTATS(Yes,,);
+
+COUNTERS:     NO of high risk account,,Replicate:
+              NO of corporate account,,Replicate:
+              NO of medium risk account,,Replicate:
+              NO of abnormal accunt,,Replicate:
+              NO of personal account,,Replicate;
+
+TALLIES:      TimeCommittee:
+              ClassifyTimeCorporate:
+              ClassifyTimePerson;
+
+DSTATS:       1,NR(Expert),Expert Utilization:
+              2,NR(Committee),Committee Utilization:
+              3,NQ(Q_abnormal),NO of waiting for committee;
+
+REPLICATE,    2,,HoursToBaseTime(2880),Yes,Yes,,,,8,Hours,No,No,,,Yes,No;
+
